@@ -1,0 +1,30 @@
+{
+  "name": "crowd",
+  "version": "1.0.0",
+  "description": "My JS13K attempt",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jimkang/crowd.git"
+  },
+  "keywords": [],
+  "author": "Jim Kang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jimkang/crowd/issues"
+  },
+  "homepage": "https://github.com/jimkang/crowd",
+  "devDependencies": {
+    "browserify": "^14.5.0",
+    "uglify-es": "^3.1.9"
+  },
+  "dependencies": {
+    "d3-selection": "^1.3.0",
+    "handle-error-web": "^1.0.1",
+    "probable": "^2.1.2"
+  }
+}
