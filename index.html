@@ -1,15 +1,42 @@
 <html>
 <head>
-  <title>Colorer</title>
-  <link rel="stylesheet" href="app.css">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How can I move the crowd?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  <link rel="stylesheet" href="app.css"></link>
 </head>
 <body>
 
-<div id="status-message" class="hidden"></div>
-<canvas id="source-canvas"></canvas>
-<canvas id="target-canvas"></canvas>
+<pre id="status-message" class="hidden"></pre>
+
+<div style="display:none;">
+  <img id="sprite-sheet" src="static/sheet.png" width="512" height="512">
+</div>
+
+<div id="canvases-container">
+  <canvas id="image-board" width="800" height="0"></canvas>
+  <canvas id="input-board" width="800" height="0"></canvas>
+  <section id="ui-board">
+    <div id="controls-layer" class="hidden">
+      <button id="blast-button" class="clickable">Blast!</button>
+    </div>
+    <div id="help-layer" class="clickable">
+      <p>
+        <strong>Zoom in and out</strong> of the map using the mouse wheel or pinch gestures. <strong>Pan around</strong> by clicking and dragging.
+      </p>
+      <p>
+        You are this green creature on the right:
+      </p>
+      <img src="static/guys.png" alt="characters" />
+      <p>
+        The other two are your enemies. <strong>Move</strong> by clicking or tapping points adjacent to yourself that are on the grid you are on. The grid you are on is drawn with thicker lines and points.
+      </p>
+      <p>
+        <strong>Click yourself</strong> to see action options. Currently, there is only one: blast. Blast will kill any enemies in the blast radius. If you kill all of your enemies, consider yourself a winner! (Some levels may not be winnable. Just <strong>reload the browser</strong> if you don't like the level.)
+      </p>
+      <button id="close-help-button" class="clickable">OK!</button>
+    </div>
+  </section>
+</div>
 
 <script src="index.js"></script>
 

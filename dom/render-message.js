@@ -1,7 +1,5 @@
-var d3 = require('d3-selection');
-
 function renderMessage({ messageType, message }) {
-  var slate = d3.select(`#${messageType}`);
+  var slate = document.querySelector(`#${messageType}`);
   slate.text(message);
   slate.classed('hidden', false);
 }
