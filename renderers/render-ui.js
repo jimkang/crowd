@@ -17,7 +17,9 @@ function onBlastClick() {
 
 function onCloseHelpClick() {
   helpLayer.classList.add('hidden');
-  concludeUI();
+  if (concludeUI) {
+    concludeUI();
+  }
 }
 
 function renderUI({ gameState, onAdvance }) {
@@ -29,7 +31,6 @@ function renderUI({ gameState, onAdvance }) {
     controlsLayer.classList.add('hidden');
   }
 
-  controlsLayer.classed('hidden', !gameState.uiOn);
   concludeUI = function advanceWithCommands() {
     gameState.uiOn = false;
     onAdvance({ gameState, commands: playerCommandQueue });

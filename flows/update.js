@@ -71,6 +71,9 @@ function movePlayer(gameState, selectedGridPoint) {
 }
 
 function moveSoul(gameState, probable, soul) {
+  if (!soul.moves) {
+    return;
+  }
   // TODO: Moving for an actual reason.
   if (soul.id === 'player') {
     return;

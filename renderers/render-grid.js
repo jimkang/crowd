@@ -24,7 +24,6 @@ function drawGridLines({ grid, imageContext, playerGridId }) {
   function drawRow(row) {
     imageContext.moveTo(row[0].x, row[0].y);
     imageContext.lineTo(row[row.length - 1].x, row[0].y);
-    console.log('row', row);
   }
 }
 

@@ -9,7 +9,8 @@ var theGameState = {
   animations: [],
   ephemerals: {
     blasts: []
-  }
+  },
+  uiOn: false
 };
 
 var probable = {
@@ -55,4 +56,3 @@ function advance({ recentClickX, recentClickY, commands }) {
 function reportTopLevelError(msg, url, lineNo, columnNo, error) {
   console.log(error);
 }
-
