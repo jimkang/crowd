@@ -1,6 +1,7 @@
 module.exports = {
   player: {
     type: 'player',
+    passable: false,
     sprite: {
       col: 2,
       row: 0,
@@ -16,6 +17,7 @@ module.exports = {
   doof: {
     type: 'doof',
     moves: true,
+    passable: false,
     sprite: {
       col: 1,
       row: 0,

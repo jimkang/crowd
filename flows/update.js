@@ -78,11 +78,12 @@ function moveSoul(gameState, probable, soul) {
   if (soul.id === 'player') {
     return;
   }
-  var neighbors = getNeighboringGridPoints(
+  var neighbors = getPassableAdjacentPoints(
     soul,
+    gameState.souls,
     findWhere(gameState.grids, { id: soul.grid.id })
   );
-  console.log('neighbors', neighbors);
+  console.log(neighbors);
   var neighbor = probable.pickFromArray(neighbors);
   soul.grid.colOnGrid = neighbor[0];
   soul.grid.rowOnGrid = neighbor[1];
@@ -94,14 +95,21 @@ function pointsAreAdjacent(a, b) {
   return dist === 1;
 }
 
-function getNeighboringGridPoints(soul, grid) {
-  var neighbors = [
+function getPassableAdjacentPoints(soul, allSouls, grid) {
+  var points = [
     [soul.grid.colOnGrid + 1, soul.grid.rowOnGrid],
     [soul.grid.colOnGrid, soul.grid.rowOnGrid + 1],
     [soul.grid.colOnGrid - 1, soul.grid.rowOnGrid],
     [soul.grid.colOnGrid, soul.grid.rowOnGrid - 1]
   ];
-  return neighbors.filter(isInGridBounds);
+  points = points.filter(isInGridBounds);
+  points = points.filter(pointDoesNotHaveAnUnpassableSoulAtIt);
+  return points;
+
+  function pointDoesNotHaveAnUnpassableSoulAtIt(point) {
+    var souls = getSoulsAtPoint(point, allSouls);
+    return souls.every(soulIsPassable);
+  }
 
   function isInGridBounds(neighbor) {
     return (
@@ -164,6 +172,18 @@ function pluck(array, prop) {
   function getProp(item) {
     return item[prop];
   }
+}
+
+function getSoulsAtPoint(point, souls) {
+  return souls.filter(soul => soulIsAtCoord(soul, point));
+}
+
+function soulIsAtCoord(soul, coord) {
+  return soul.grid.colOnGrid === coord[0] && soul.grid.rowOnGrid === coord[1];
+}
+
+function soulIsPassable(soul) {
+  return soul.passable === undefined || soul.passable;
 }
 
 module.exports = update;

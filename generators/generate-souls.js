@@ -106,7 +106,9 @@ function getSpacesOccupiedByBoxes({ probable, colLimit, rowLimit }) {
       }
     }
   }
-  console.table(boxRows);
+  if (console.table) {
+    console.table(boxRows);
+  }
   return boxRows;
 }
 
